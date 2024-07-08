@@ -178,7 +178,7 @@
             display: flex;
             position: relative;
             left: 0px; /*슬라이딩시 좌표변경
-                /* transition: left 0.5s ease; */
+          /* transition: left 0.5s ease; */
           }
           /* .slider_panel>li */
           .slider_image {
@@ -198,10 +198,14 @@
             top: 50%;
             width: 100%;
             display: flex;
-            transform: translate(-50%);
+            transform: translateY(
+              -50%
+            ); /* [차이점 1]: 두 번째 코드는 translateY(-50%)를 사용 */
             justify-content: space-between;
           }
-          .direct_btn img{cursor: pointer;}
+          .direct_btn img {
+            cursor: pointer;
+          }
           .control_panel {
             position: absolute;
             bottom: 10px;
@@ -211,7 +215,11 @@
           .control_btn {
             width: 10px;
             height: 10px;
-            background-color: rgb(83, 132, 175);
+            background-color: rgb(
+              83,
+              132,
+              175
+            ); /* [차이점 2]: 두 번째 코드는 white 배경색 사용 */
             border-radius: 50%;
             cursor: pointer;
           }
@@ -239,6 +247,7 @@
                 <img src="./img/left_btn.png" alt="" />
               </div>
               <div class="right">
+                <!-- [차이점 3]: 두 번째 코드는 "right_btn" 클래스 사용 -->
                 <img src="./img/right_btn.png" alt="" />
               </div>
             </div>

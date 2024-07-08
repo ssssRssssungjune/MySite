@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5단계(menuZone)</title>
+    <title>6단계(슬라이더Zone)</title>
     <script src="./js/jquery.js"></script>
     <style>
       * {
@@ -82,17 +82,21 @@
             margin: 0 auto;
             padding: 0;
           }
-          .mainmenu>li:hover>a{background-color: #444;}
-          .mainmenu>li{
+          .mainmenu > li:hover > a {
+            background-color: #444;
+          }
+          .mainmenu > li {
             position: relative;
           }
-          .mainmenu>li:hover> .submenu {display: block;}
-          .mainmenu>li>a{
+          .mainmenu > li:hover > .submenu {
+            display: block;
+          }
+          .mainmenu > li > a {
             display: block;
             color: white;
             padding: 15px 20px;
           }
-          .submenu{
+          .submenu {
             display: none;
             position: absolute;
             top: 100%;
@@ -101,9 +105,13 @@
             width: 200px;
             z-index: 10;
           }
-          .submenu>li:hover {display: block;}
-          .submenu>li>a:hover {background-color: #555;}
-          .submenu>li>a{
+          .submenu > li:hover {
+            display: block;
+          }
+          .submenu > li > a:hover {
+            background-color: #555;
+          }
+          .submenu > li > a {
             display: block;
             color: white;
             padding: 10px;
@@ -157,7 +165,85 @@
         </div>
         <!-- 메뉴Zone끝 -->
         <!-- 슬라이더Zone시작 -->
-        <div id="sliderZone"></div>
+        <style>
+          /* 슬라이더 배경이미지 */
+          #sliderZone {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+          }
+          .slider_panel {
+            display: flex;
+            position: relative;
+            left: 0px; /*슬라이딩시 좌표변경
+                /* transition: left 0.5s ease; */
+          }
+          /* .slider_panel>li */
+          .slider_image {
+            min-width: 100%;
+          }
+          .slider_image img {
+            width: 100%;
+            display: block;
+          }
+          /* 슬라이더 컨트롤 */
+          #sub_photo_bg {
+            background-color: aqua;
+          }
+          /* 좌우버튼 */
+          .direct_btn {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            transform: translate(-50%);
+            justify-content: space-between;
+          }
+          .direct_btn img{cursor: pointer;}
+          .control_panel {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            display: flex;
+          }
+          .control_btn {
+            width: 10px;
+            height: 10px;
+            background-color: rgb(83, 132, 175);
+            border-radius: 50%;
+            cursor: pointer;
+          }
+          .control_btn.active {
+            background-color: red;
+          }
+        </style>
+        <div id="sliderZone">
+          <div id="sub_photo_bg">
+            <ul class="slider_panel">
+              <li class="slider_img"><img src="./img/1.jpg" alt="" /></li>
+              <li class="slider_img"><img src="./img/2.jpg" alt="" /></li>
+              <li class="slider_img"><img src="./img/3.jpg" alt="" /></li>
+              <li class="slider_img"><img src="./img/1.jpg" alt="" /></li>
+              <li class="slider_img"><img src="./img/2.jpg" alt="" /></li>
+              <li class="slider_img"><img src="./img/3.jpg" alt="" /></li>
+            </ul>
+            <div class="control_panel">
+              <div class="control_btn active" data-index="0"></div>
+              <div class="control_btn" data-index="1"></div>
+              <div class="control_btn" data-index="2"></div>
+            </div>
+            <div class="direct_btn">
+              <div class="left_btn">
+                <img src="./img/left_btn.png" alt="" />
+              </div>
+              <div class="right">
+                <img src="./img/right_btn.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- 슬라이더Zone끝 -->
       </div>
       <!-- 상단Area끝 -->

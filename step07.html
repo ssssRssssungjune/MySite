@@ -177,8 +177,8 @@
           .slider_panel {
             display: flex;
             position: relative;
-            left: 0px; /*슬라이딩시 좌표변경
-          /* transition: left 0.5s ease; */
+            left: 0px; /*슬라이딩시 좌표변경*/
+            transition: left 0.5s ease;
           }
           /* .slider_panel>li */
           .slider_image {
@@ -230,12 +230,12 @@
         <div id="sliderZone">
           <div id="sub_photo_bg">
             <ul class="slider_panel">
-              <li class="slider_img"><img src="./img/1.jpg" alt="" /></li>
-              <li class="slider_img"><img src="./img/2.jpg" alt="" /></li>
-              <li class="slider_img"><img src="./img/3.jpg" alt="" /></li>
-              <li class="slider_img"><img src="./img/1.jpg" alt="" /></li>
-              <li class="slider_img"><img src="./img/2.jpg" alt="" /></li>
-              <li class="slider_img"><img src="./img/3.jpg" alt="" /></li>
+              <li class="slider_image"><img src="./img/1.jpg" alt="" /></li>
+              <li class="slider_image"><img src="./img/2.jpg" alt="" /></li>
+              <li class="slider_image"><img src="./img/3.jpg" alt="" /></li>
+              <li class="slider_image"><img src="./img/1.jpg" alt="" /></li>
+              <li class="slider_image"><img src="./img/2.jpg" alt="" /></li>
+              <li class="slider_image"><img src="./img/3.jpg" alt="" /></li>
             </ul>
             <div class="control_panel">
               <div class="control_btn active" data-index="0"></div>
@@ -254,12 +254,43 @@
           </div>
         </div>
         <script>
-            // $(function(){
-            //     const $sliderPanel = $('slider_panel')
-                 //     const $controlBtns = $('.control_btn')
+          $(function () {
+            const $sliderPanel = $(".slider_panel");
+            const $controlBtns = $(".control_btn");
+            const $leftBtn = $(".left_btn img");
+            const $rightBtn = $(".right img");
+            const slideCount = $(".slider_image").length;
 
+            let currentIndex = 0;
 
-                // });
+            function updateSlider(index) {
+              $sliderPanel.css("left", `-${index * 100}%`);
+              $controlBtns.removeClass("active");
+              $controlBtns.eq(index % 3).addClass("active");
+            }
+
+            $leftBtn.on("click", function () {
+              currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+              updateSlider(currentIndex);
+            });
+
+            $rightBtn.on("click", function () {
+              currentIndex = (currentIndex + 1) % slideCount;
+              updateSlider(currentIndex);
+            });
+
+            $controlBtns.on("click", function () {
+              currentIndex = $(this).data("index");
+              updateSlider(currentIndex);
+            });
+
+            // 초기 슬라이더 설정
+            updateSlider(currentIndex);
+            setInterval(function () {
+              currentIndex = (currentIndex + 1) % $controlBtns.length;
+              updateSlider(currentIndex);
+            }, 1500);
+          });
         </script>
         <!-- 슬라이더Zone끝 -->
       </div>
